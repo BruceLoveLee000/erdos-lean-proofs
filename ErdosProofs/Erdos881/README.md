@@ -12,16 +12,25 @@ Must some infinite `B ⊆ A` leave `A \ B` a basis of order `k + 1`? The problem
 | `Erdos881K2.erdos_881_two` | The case `k = 2` of `Erdos881.erdos_881`, in the formal-conjectures statement. |
 | `Erdos881K2.not_minimal_three_of_two_basis` | No minimal asymptotic basis of order 3 is an asymptotic basis of order 2. Erdős and Nathanson asked this in *Minimal asymptotic bases for the natural numbers*, J. Number Theory 12 (1980), p. 155, and proved the weaker statement for order 4. |
 
-The cases `k = 0` and `k = 1` are easy; the cases `k ≥ 3` remain open. A write-up posted on the
-problem's forum claims a counterexample for every `k ≥ 2`; the theorem above rules this out for
-`k = 2`.
+The cases `k = 0` and `k = 1` are easy; the cases `k ≥ 3` remain open. A manuscript posted on the
+problem's forum on 2026-05-03, *Infinite Deletions from Strongly Minimal Additive Bases*, claims a
+counterexample for every `k ≥ 2`. It reads a basis of order `k` as sums of exactly `k` elements,
+as formal-conjectures does, so the theorem above rules its claim out for `k = 2`. Its claim for
+`k ≥ 3` is unrefereed, and readers on the forum have reported gaps in it.
 
 The definitions follow formal-conjectures: `h • A` is the sumset of exactly `h` elements, and
 `0` may belong to `A`. The result also holds when a basis of order `h` means "at most `h`
 summands": apply the theorem to `A ∪ {0}` and remove `0` from the deleted set.
 
-We found no earlier proof of these statements in the literature we checked. If you know one,
-please open an issue.
+## Prior work
+
+The same manuscript states `not_minimal_three_of_two_basis` as its Proposition 12 and sketches a
+proof: it argues that such a set would be a Sidon set, which is too sparse to be a basis of order
+2. That claim predates ours. The manuscript is unrefereed, and we have not checked its argument.
+As far as we know, `K2.lean` is the first checked proof of that statement.
+
+For `infinite_deletion_of_two_basis` and `erdos_881_two`, we found no earlier proof in the
+literature we checked. If you know of one, please open an issue.
 
 ## How the proof works
 
