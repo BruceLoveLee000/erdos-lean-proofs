@@ -18,8 +18,10 @@ project:
     residue class, each of whose removal is compensated through two fixed
     shifts, can be deleted together. If none does, elements are deleted one at
     a time while the representations already used are protected, and a
-    combinatorial argument shows that this process never gets stuck. The cases
-    k >= 3 remain open.
+    combinatorial argument shows that this process never gets stuck. As a
+    corollary it answers a question of Erdős and Nathanson (1980): a minimal
+    asymptotic basis of order 3 cannot be an asymptotic basis of order 2. The
+    cases k >= 3 of Problem 881 remain open.
   authors:
     - "Bruce Lee"
   license: "Apache-2.0"
@@ -67,9 +69,8 @@ sources:
     note: >-
       Background on minimal asymptotic bases. On p. 155 the authors ask
       whether a minimal asymptotic basis of order 3 can be an asymptotic basis
-      of order 2. The proof development also derives a negative answer from
-      the main theorem (Erdos881K2.not_minimal_three_of_two_basis), but that
-      corollary is not among the compared declarations.
+      of order 2. Erdos881K2.not_minimal_three_of_two_basis answers this in the
+      negative, as a corollary of the main theorem.
     author_endorsement: not-contacted
   - title: "Infinite Deletions from Strongly Minimal Additive Bases"
     type: other
@@ -82,7 +83,7 @@ sources:
       k >= 3 is unrefereed and readers on the forum have reported gaps; we have
       not checked it. It also states, as its Proposition 12, that no minimal
       asymptotic basis of order 3 is a basis of order 2, with a proof sketch;
-      that statement is proved in this repository but is not compared here.
+      that statement is Erdos881K2.not_minimal_three_of_two_basis here.
     author_endorsement: not-contacted
 
 related_formalizations:
@@ -110,7 +111,8 @@ status:
     reading in which a basis of order n is an asymptotic basis of order n with
     sums of exactly n elements and 0 may belong to A. The compared theorems are
     Erdos881K2.infinite_deletion_of_two_basis (no minimality hypothesis) and
-    Erdos881K2.erdos_881_two (the case k = 2 of Erdos881.erdos_881). The cases
+    Erdos881K2.erdos_881_two (the case k = 2 of Erdos881.erdos_881), and the
+    corollary Erdos881K2.not_minimal_three_of_two_basis. The cases
     k >= 3 are not addressed. The result also holds when a basis of order n
     means sums of at most n elements (apply the theorem to A together with 0),
     but that variant is not stated formally here.
@@ -167,7 +169,7 @@ review:
     No human has reviewed the mathematical argument. Correctness rests on the
     Lean kernel and the independent kernels run by Comparator. The alignment of
     the statements with formal-conjectures was checked mechanically: under
-    pp.all, the two definitions and the two theorem statements in
+    pp.all, the two definitions and the three theorem statements in
     Challenge.lean print identically to Set.IsAsymptoticAddBasisOfOrder,
     Erdos881.IsMinimalAsymptoticAddBasisOfOrder and the original theorems
     built against formal-conjectures at commit
@@ -192,6 +194,15 @@ alignment:
         For every minimal asymptotic additive basis A ⊆ ℕ of order 2, there is
         an infinite B ⊆ A such that A \ B is an asymptotic additive basis of
         order 3. formal-conjectures writes the order as k + 1; here it is 3.
+    - source: "Erdős and Nathanson (1980), question on p. 155"
+      lean: "Erdos881K2.not_minimal_three_of_two_basis"
+      module: "Challenge"
+      status: "proved"
+      note: >-
+        Every asymptotic additive basis A ⊆ ℕ of order 2 has a proper subset
+        that is an asymptotic additive basis of order 3. Hence a minimal
+        asymptotic basis of order 3 (no proper subset is a basis of order 3)
+        is never an asymptotic basis of order 2.
 
 acknowledgements: >-
   Mathlib. The definitions and supporting lemmas in Erdos881K2/Basis.lean are

@@ -3,7 +3,8 @@
   "solution_module": "Solution",
   "theorem_names": [
     "Erdos881K2.infinite_deletion_of_two_basis",
-    "Erdos881K2.erdos_881_two"
+    "Erdos881K2.erdos_881_two",
+    "Erdos881K2.not_minimal_three_of_two_basis"
   ],
   "definition_names": [],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]

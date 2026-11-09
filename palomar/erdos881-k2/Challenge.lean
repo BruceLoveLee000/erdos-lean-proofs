@@ -6,6 +6,7 @@ module
 
 public import Mathlib.Algebra.Group.Pointwise.Set.Basic
 public import Mathlib.Order.Filter.Cofinite
+public import Mathlib.Order.CompletePartialOrder
 
 /-!
 # Erdős Problem 881 for `k = 2`: statements
@@ -15,7 +16,7 @@ order `k` that is minimal, in the sense that `A \ B` is not a basis of order `k`
 `B ⊆ A`, must some infinite `B ⊆ A` leave `A \ B` a basis of order `k + 1`? The problem is open
 for `k ≥ 3`.
 
-This file states the two results that `Solution.lean` proves:
+This file states the three results that `Solution.lean` proves:
 
 * `Erdos881K2.infinite_deletion_of_two_basis`: every asymptotic additive basis `A ⊆ ℕ` of order 2
   contains an infinite set `B` such that `A \ B` is an asymptotic additive basis of order 3. No
@@ -24,6 +25,11 @@ This file states the two results that `Solution.lean` proves:
   [google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures)
   (`Erdos881.erdos_881` in `FormalConjectures/ErdosProblems/881.lean`). It follows from the first
   result, because a minimal basis of order 2 is in particular a basis of order 2.
+* `Erdos881K2.not_minimal_three_of_two_basis`: every asymptotic additive basis `A ⊆ ℕ` of order 2
+  has a proper subset that is an asymptotic additive basis of order 3. This answers a question of
+  Erdős and Nathanson (*Minimal asymptotic bases for the natural numbers*, J. Number Theory 12
+  (1980), p. 155): a minimal asymptotic basis of order 3 cannot be an asymptotic basis of order 2.
+  It also follows from the first result, since `B` is nonempty.
 
 ## Conventions
 
@@ -38,6 +44,9 @@ development, which are taken verbatim from formal-conjectures.
 * `A` may contain `0`. Since `0 + a = a`, a set containing `0` that is a basis of order `n` is a
   basis of every larger order, so in that case "exactly `n` summands" and "at most `n` summands"
   agree.
+* `Mathlib.Order.CompletePartialOrder` is imported so that `C ⊂ A` elaborates through the same
+  instances as in the full-Mathlib build of formal-conjectures; Comparator compares terms
+  syntactically, including instance paths.
 * "Asymptotic" means that all but finitely many natural numbers are sums of exactly `n` elements
   of `A`, which is the usual notion of an (asymptotic) additive basis in the literature on
   minimal bases. The result also holds when a basis of order `n` means "at most `n` summands":
@@ -98,6 +107,14 @@ then some infinite `B ⊆ A` leaves `A \ B` an asymptotic additive basis of orde
 theorem erdos_881_two :
     ∀ A : Set ℕ, Erdos881.IsMinimalAsymptoticAddBasisOfOrder 2 A →
       ∃ B : Set ℕ, B ⊆ A ∧ B.Infinite ∧ (A \ B).IsAsymptoticAddBasisOfOrder 3 := by
+  sorry
+
+/-- Erdős and Nathanson (1980) asked whether a minimal asymptotic basis of order three can also be
+an asymptotic basis of order two. It cannot: every asymptotic additive basis `A ⊆ ℕ` of order 2
+has a proper subset that is an asymptotic additive basis of order 3, so `A` is not a minimal
+asymptotic basis of order 3 in their sense (no proper subset is a basis). -/
+theorem not_minimal_three_of_two_basis {A : Set ℕ} (hA : A.IsAsymptoticAddBasisOfOrder 2) :
+    ∃ C : Set ℕ, C ⊂ A ∧ C.IsAsymptoticAddBasisOfOrder 3 := by
   sorry
 
 end Erdos881K2

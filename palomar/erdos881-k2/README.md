@@ -22,14 +22,15 @@ exactly `n` elements of `A`, with repetition allowed. `0` may belong to `A`.
 | --- | --- |
 | `Erdos881K2.infinite_deletion_of_two_basis` | Every asymptotic additive basis of order 2 contains an infinite set whose removal leaves an asymptotic additive basis of order 3. No minimality is assumed. |
 | `Erdos881K2.erdos_881_two` | The case `k = 2` of `Erdos881.erdos_881` from formal-conjectures. |
+| `Erdos881K2.not_minimal_three_of_two_basis` | Every asymptotic additive basis of order 2 has a proper subset that is an asymptotic additive basis of order 3. |
 
 The result also holds when a basis of order `n` means "at most `n` summands": apply the first
 theorem to `A ∪ {0}` and remove `0` from the deleted set. That variant is not stated formally.
 
-The proof development also proves `Erdos881K2.not_minimal_three_of_two_basis`: no minimal
-asymptotic basis of order 3 is an asymptotic basis of order 2. This answers a question of Erdős
+The third theorem says that no minimal asymptotic basis of order 3 (one with no proper subset
+that is a basis of order 3) is an asymptotic basis of order 2. This answers a question of Erdős
 and Nathanson (*Minimal asymptotic bases for the natural numbers*, J. Number Theory 12 (1980),
-p. 155). It is not among the compared declarations. See
+p. 155). See
 [`ErdosProofs/Erdos881/README.md`](../../ErdosProofs/Erdos881/README.md) for prior work,
 including an earlier, unrefereed manuscript claim of that corollary.
 
@@ -37,8 +38,8 @@ including an earlier, unrefereed manuscript claim of that corollary.
 
 | File | Contents |
 | --- | --- |
-| [`Challenge.lean`](Challenge.lean) | The definitions and the two statements, importing only Mathlib. |
-| [`Solution.lean`](Solution.lean) | Imports the proof development, which proves the two statements under the same names. |
+| [`Challenge.lean`](Challenge.lean) | The definitions and the three statements, importing only Mathlib. |
+| [`Solution.lean`](Solution.lean) | Imports the proof development, which proves the three statements under the same names. |
 | [`Erdos881K2/Basis.lean`](Erdos881K2/Basis.lean) | The formal-conjectures definitions and lemmas the proof uses, copied verbatim. |
 | [`Erdos881K2/Proof.lean`](Erdos881K2/Proof.lean) | The proof: [`ErdosProofs/Erdos881/K2.lean`](../../ErdosProofs/Erdos881/K2.lean), ported to Lean v4.35.0. |
 | [`comparator.json`](comparator.json) | The [Comparator](https://github.com/leanprover/comparator) configuration. |

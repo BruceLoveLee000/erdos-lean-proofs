@@ -10,7 +10,8 @@ public import Erdos881K2.Proof
 # Erdős Problem 881 for `k = 2`: proofs
 
 The proof development is in `Erdos881K2/Proof.lean`, which proves
-`Erdos881K2.infinite_deletion_of_two_basis` and `Erdos881K2.erdos_881_two` under the same names
+`Erdos881K2.infinite_deletion_of_two_basis`, `Erdos881K2.erdos_881_two` and
+`Erdos881K2.not_minimal_three_of_two_basis` under the same names
 and statements as `Challenge.lean`. The definitions those statements use,
 `Set.IsAsymptoticAddBasisOfOrder` and `Erdos881.IsMinimalAsymptoticAddBasisOfOrder`, are in
 `Erdos881K2/Basis.lean`, copied from formal-conjectures.
