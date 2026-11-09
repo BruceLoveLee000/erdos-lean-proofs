@@ -34,6 +34,9 @@ literature we checked. If you know of one, please open an issue.
 
 ## How the proof works
 
+[PROOF.md](PROOF.md) gives the full informal proof, lemma by lemma, with the matching `K2.lean`
+declarations.
+
 The proof splits on whether some positive difference `d` occurs infinitely often in `A`, that
 is, whether `b` and `b + d` are both in `A` for infinitely many `b`.
 
