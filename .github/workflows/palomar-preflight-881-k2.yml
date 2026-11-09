@@ -1,0 +1,26 @@
+# Palomar's mechanical preflight for the Erdős 881 k = 2 project in palomar/erdos881-k2.
+# It runs Palomar's own verification workflow, pinned to one PalomarSubmission commit, on this
+# repository's runners. It is advisory and is not a registry submission.
+name: Palomar preflight (Erdős 881, k = 2)
+
+on:
+  pull_request:
+    paths:
+      - "palomar/erdos881-k2/**"
+      - ".github/workflows/palomar-preflight-881-k2.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  palomar-preflight:
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ github.event.pull_request.head.sha || github.sha }}
+      pipeline_commit: 14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+      request_id: preflight881
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: '{"project_path":"palomar/erdos881-k2","comparator_config_path":"palomar/erdos881-k2/comparator.json","authorization_relationship":"I am a responsible author or maintainer"}'

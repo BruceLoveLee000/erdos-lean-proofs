@@ -21,6 +21,14 @@ Every theorem listed in a problem README depends only on the axioms `propext`,
 `Classical.choice` and `Quot.sound`. Each problem directory has an `Axioms.lean` module whose build
 prints them.
 
+## Palomar projects
+
+[`palomar/erdos881-k2`](palomar/erdos881-k2) is a self-contained copy of the Problem 881 proof
+in the layout of the [Palomar registry](https://palomar-registry.org): a Mathlib-only
+`Challenge.lean`, a `Solution.lean`, a Comparator configuration and a `formalization.yaml`. It
+builds on a newer Lean toolchain than the rest of the repository, so it has its own
+`lean-toolchain` and Lake files; build it from its own directory.
+
 ## How these proofs are found
 
 The proofs come from an automated search with AI models in the
