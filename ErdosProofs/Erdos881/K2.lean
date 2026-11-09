@@ -2,7 +2,9 @@
 Copyright 2026 Bruce Lee.
 Released under the Apache License, Version 2.0.
 -/
-import FormalConjectures.ErdosProblems.«881»
+module
+
+public import FormalConjectures.ErdosProblems.«881»
 
 /-!
 # Erdős Problem 881 for `k = 2`
@@ -33,6 +35,8 @@ The proof splits on whether some positive difference occurs infinitely often in 
 Conventions are those of formal-conjectures: `h • A` is the `h`-fold sumset with exactly `h`
 summands, and `0` may belong to `A`.
 -/
+
+public section
 
 namespace Erdos881K2
 
@@ -723,3 +727,5 @@ theorem not_minimal_three_of_two_basis {A : Set ℕ} (hA : A.IsAsymptoticAddBasi
   exact ⟨A \ B, ⟨sdiff_subset, fun h => (h (hBA hb)).2 hb⟩, hC⟩
 
 end Erdos881K2
+
+end

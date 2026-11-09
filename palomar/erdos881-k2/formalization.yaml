@@ -1,0 +1,199 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 881 for k = 2: infinite deletions from asymptotic bases of order two"
+  description: >-
+    Erdős Problem 881 asks whether every minimal additive basis A of order k
+    (one from which no infinite set can be removed while keeping a basis of
+    order k) contains an infinite set B such that A \ B is a basis of order
+    k + 1. This formalization settles the case k = 2 in the formulation of
+    google-deepmind/formal-conjectures, where a basis of order n is an
+    asymptotic basis: all but finitely many natural numbers are sums of
+    exactly n elements of A. It proves the stronger statement that every
+    asymptotic additive basis of order 2 in the natural numbers, minimal or
+    not, contains an infinite set whose removal leaves an asymptotic additive
+    basis of order 3. The proof splits on whether some positive difference
+    occurs infinitely often in A. If one does, a sparse set of elements in one
+    residue class, each of whose removal is compensated through two fixed
+    shifts, can be deleted together. If none does, elements are deleted one at
+    a time while the representations already used are protected, and a
+    combinatorial argument shows that this process never gets stuck. The cases
+    k >= 3 remain open.
+  authors:
+    - "Bruce Lee"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Bruce Lee"
+
+classification:
+  arxiv: ["math.NT", "math.CO"]
+  msc2020: ["11B13"]
+
+sources:
+  - title: >-
+      Every asymptotic additive basis of order 2 in the natural numbers
+      contains an infinite set whose removal leaves an asymptotic additive
+      basis of order 3; in particular, Erdős Problem 881 holds for k = 2
+    type: original-proof
+    relationship: other
+    note: >-
+      The proof was found by an automated search and is first presented in
+      this repository. We found no earlier proof in the literature we checked,
+      but we have not made an exhaustive search, so novelty is not claimed
+      beyond that.
+  - title: "Erdős Problem #881"
+    authors:
+      - "Thomas F. Bloom"
+    contributors:
+      - name: "Paul Erdős"
+        role: "problem-proposer"
+    id: "https://www.erdosproblems.com/881"
+    type: "web discussion"
+    location: "https://www.erdosproblems.com/881"
+    relationship: background
+    note: >-
+      The problem as posed, with the site's reference [Er98] to Erdős. The
+      problem is listed as open; this formalization settles only k = 2.
+    author_endorsement: not-contacted
+  - title: "Minimal asymptotic bases for the natural numbers"
+    authors:
+      - "Paul Erdős"
+      - "Melvyn B. Nathanson"
+    id: "doi:10.1016/0022-314X(80)90048-7"
+    type: paper
+    location: "Journal of Number Theory 12 (1980), no. 2, 154-159"
+    relationship: background
+    note: >-
+      Background on minimal asymptotic bases. On p. 155 the authors ask
+      whether a minimal asymptotic basis of order 3 can be an asymptotic basis
+      of order 2. The proof development also derives a negative answer from
+      the main theorem (Erdos881K2.not_minimal_three_of_two_basis), but that
+      corollary is not among the compared declarations.
+    author_endorsement: not-contacted
+  - title: "Infinite Deletions from Strongly Minimal Additive Bases"
+    type: other
+    location: "Manuscript posted on the erdosproblems.com forum thread for Problem 881 on 2026-05-03"
+    relationship: other
+    note: >-
+      Unrefereed manuscript that claims a counterexample to Problem 881 for
+      every k >= 2, reading a basis of order k as sums of exactly k elements.
+      The theorem formalized here rules that claim out for k = 2. Its claim for
+      k >= 3 is unrefereed and readers on the forum have reported gaps; we have
+      not checked it. It also states, as its Proposition 12, that no minimal
+      asymptotic basis of order 3 is a basis of order 2, with a proof sketch;
+      that statement is proved in this repository but is not compared here.
+    author_endorsement: not-contacted
+
+related_formalizations:
+  - id: "https://github.com/google-deepmind/formal-conjectures/blob/c6f4b4bdab8fdabb19191a8a1648be21b81253b0/FormalConjectures/ErdosProblems/881.lean"
+    relationship: builds-on
+    note: >-
+      The formal statement of Problem 881 (Erdos881.erdos_881, open). The
+      definitions Set.IsAsymptoticAddBasisOfOrder and
+      Erdos881.IsMinimalAsymptoticAddBasisOfOrder, and the lemmas about them
+      that the proof uses, are copied verbatim into Erdos881K2/Basis.lean.
+      Challenge.lean restates the two definitions in the same source form, and
+      Comparator checks that they are the same terms. erdos_881_two is the case
+      k = 2 of Erdos881.erdos_881.
+  - id: "https://github.com/BruceLoveLee000/erdos-lean-proofs/blob/10a88193254999351c81476a304e673291ce1e76/ErdosProofs/Erdos881/K2.lean"
+    relationship: other
+    note: >-
+      The same proof in this repository, built directly against
+      formal-conjectures on Lean v4.33.1. Erdos881K2/Proof.lean is a port of
+      it to Lean v4.35.0 and Mathlib alone; the only change to the proofs is
+      replacing the deprecated dif_pos with dite_eq_left.
+
+status:
+  scope: >-
+    Formalizes the case k = 2 of Erdős Problem 881, in the formal-conjectures
+    reading in which a basis of order n is an asymptotic basis of order n with
+    sums of exactly n elements and 0 may belong to A. The compared theorems are
+    Erdos881K2.infinite_deletion_of_two_basis (no minimality hypothesis) and
+    Erdos881K2.erdos_881_two (the case k = 2 of Erdos881.erdos_881). The cases
+    k >= 3 are not addressed. The result also holds when a basis of order n
+    means sums of at most n elements (apply the theorem to A together with 0),
+    but that variant is not stated formally here.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: autonomous
+      models: ["GPT-6.1"]
+      framework: "tokens-as-parameters (https://github.com/BruceLoveLee000/tokens-as-parameters)"
+      tool_setup: >-
+        Automated proof search with AI agents working in parallel, with web
+        research enabled, checked by the Lean kernel. The search ran on the
+        full statement of Problem 881 and settled k = 2 as a subgoal.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "not tracked"
+        hardware: "API-only"
+      prompting_notes: "The search was given the formal-conjectures statement of Problem 881."
+    - method: agent
+      models: ["Claude (Anthropic)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude reduced the search's Lean code to the declarations used by the
+        main theorems, rewrote the comments and the README, and ported the
+        proof to this Palomar layout (module system, Lean v4.35.0, Mathlib-only
+        Challenge).
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "not tracked"
+  notes: >-
+    No human wrote the mathematical argument. The proof was found by the
+    automated search, the Lean kernel checked it, and the result was cleaned up
+    and documented with Claude. The human maintainer directed the work and is
+    responsible for the submission.
+
+fidelity:
+  divergences: >-
+    None known for k = 2. The statements are those of formal-conjectures:
+    Challenge.lean restates its two definitions in the same source form, and
+    Comparator checks that the restated definitions are the same terms as the
+    copies used by the proof.
+
+review:
+  status: "unchecked"
+  reviewers:
+    - "none"
+  notes: >-
+    No human has reviewed the mathematical argument. Correctness rests on the
+    Lean kernel and the independent kernels run by Comparator. The alignment of
+    the statements with formal-conjectures was checked mechanically: under
+    pp.all, the two definitions and the two theorem statements in
+    Challenge.lean print identically to Set.IsAsymptoticAddBasisOfOrder,
+    Erdos881.IsMinimalAsymptoticAddBasisOfOrder and the original theorems
+    built against formal-conjectures at commit
+    c6f4b4bdab8fdabb19191a8a1648be21b81253b0.
+
+alignment:
+  namespace: "Erdos881K2"
+  statements:
+    - source: "Erdős Problem 881, case k = 2, without the minimality hypothesis"
+      lean: "Erdos881K2.infinite_deletion_of_two_basis"
+      module: "Challenge"
+      status: "proved"
+      note: >-
+        For every A ⊆ ℕ that is an asymptotic additive basis of order 2, there
+        is an infinite B ⊆ A such that A \ B is an asymptotic additive basis of
+        order 3. This is stronger than the case k = 2 of the problem.
+    - source: "Erdos881.erdos_881 (formal-conjectures) with k = 2"
+      lean: "Erdos881K2.erdos_881_two"
+      module: "Challenge"
+      status: "proved"
+      note: >-
+        For every minimal asymptotic additive basis A ⊆ ℕ of order 2, there is
+        an infinite B ⊆ A such that A \ B is an asymptotic additive basis of
+        order 3. formal-conjectures writes the order as k + 1; here it is 3.
+
+acknowledgements: >-
+  Mathlib. The definitions and supporting lemmas in Erdos881K2/Basis.lean are
+  copied from google-deepmind/formal-conjectures (Apache-2.0, copyright The
+  Formal Conjectures Authors).
