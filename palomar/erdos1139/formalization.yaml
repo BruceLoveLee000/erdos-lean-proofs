@@ -1,0 +1,154 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 1139: unbounded gaps between integers with at most two prime factors"
+  description: >-
+    Let u_1 < u_2 < ... be the positive integers with at most two prime
+    factors, counted with multiplicity. Erdős Problem 1139 asks whether
+    limsup (u_{k+1} - u_k) / log k = infinity. This formalization proves that
+    it is, in the formulation of google-deepmind/formal-conjectures
+    (Erdos1139.erdos_1139). The proof is an Erdős-Rankin style construction:
+    the Chinese remainder theorem gives N such that every number in a long
+    interval N + 1, ..., N + y is given a divisor below it with exactly two prime
+    factors (two assigned primes, or the square of one), and so has at least
+    three prime factors, with
+    log N small compared to y. The residues of the small primes are chosen by
+    averaging over all assignments, with Euler-product weights and
+    smooth-number bounds; larger primes are grouped into bands and handled by
+    a second-moment argument; the few remaining numbers are patched with
+    squares of reserve primes. No results on linear equations in primes are
+    used.
+  authors:
+    - "Bruce Lee"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Bruce Lee"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11N05", "11N25"]
+
+sources:
+  - title: >-
+      The gaps between consecutive integers with at most two prime factors are
+      unbounded relative to log k; in particular, Erdős Problem 1139 holds
+    type: original-proof
+    relationship: other
+    note: >-
+      The proof was found by an automated search without internet access and
+      is first presented in this repository. A different proof, by GPT Pro and
+      based on the Green-Tao theorem on linear equations in primes, was posted
+      on the problem's forum thread on 2026-06-19; that proof is not formalized
+      here and this one does not depend on it.
+  - title: "Erdős Problem #1139"
+    authors:
+      - "Thomas F. Bloom"
+    contributors:
+      - name: "Paul Erdős"
+        role: "problem-proposer"
+    id: "https://www.erdosproblems.com/1139"
+    type: "web discussion"
+    location: "https://www.erdosproblems.com/1139"
+    relationship: background
+    note: >-
+      The problem as posed, with the site's reference [Va99, 1.4]. Listed as
+      open on the site (last edited 2026-01-23).
+    author_endorsement: not-contacted
+  - title: "Erdős Problem #1139 discussion thread"
+    type: "web discussion"
+    location: "https://www.erdosproblems.com/forum/thread/1139"
+    relationship: background
+    note: >-
+      Records a proof claim by GPT Pro (2026-06-19, summarised by Liam Price and
+      screened by Nat Sothanaphan), earlier discussion by Chojecki, gavinsherry
+      and Tao, and the connection to Problem 689.
+    author_endorsement: not-contacted
+
+related_formalizations:
+  - id: "https://github.com/google-deepmind/formal-conjectures/blob/<FC_COMMIT>/FormalConjectures/ErdosProblems/1139.lean"
+    relationship: builds-on
+    note: >-
+      The formal statement Erdos1139.erdos_1139. It uses only Mathlib
+      definitions (Nat.nth, ArithmeticFunction.cardFactors, Filter.limsup,
+      EReal), so Challenge.lean restates it verbatim with Mathlib imports only.
+  - id: "https://github.com/BruceLoveLee000/erdos-lean-proofs/blob/<REPO_COMMIT>/ErdosProofs/Erdos1139/Main.lean"
+    relationship: other
+    note: >-
+      The same proof in this repository, built directly against
+      formal-conjectures on Lean v4.33.1. Erdos1139/Proof.lean is a port of it
+      to Lean v4.35.0 and Mathlib alone.
+
+status:
+  scope: >-
+    Proves Erdős Problem 1139 as stated in formal-conjectures: with u the
+    increasing enumeration (from index 0) of the positive integers n with
+    Ω n ≤ 2, the limsup in EReal of (u (k + 1) - u k) / log (k + 1) is ⊤.
+    Indexing from 0 and dividing by log (k + 1) instead of log k do not change
+    the limsup.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: autonomous
+      models: ["GPT-6.2-sol"]
+      framework: "Codex CLI, in a screening experiment of tokens-as-parameters (https://github.com/BruceLoveLee000/tokens-as-parameters)"
+      tool_setup: >-
+        One Codex CLI session at maximum reasoning effort, with the formal
+        statement and its definitions only, no network access, and a 12-hour
+        limit. It was not told that the problem is open. The session was
+        resumed once with a short prompt to continue; the Lean kernel checked
+        the result.
+      cost:
+        wall_time: "about 75 minutes"
+        spend_usd: "subscription-based (47.5M tokens, mostly cached input)"
+        hardware: "API-only"
+      prompting_notes: "Prove or disprove the statement in Case.lean, without changing the statement or using extra axioms."
+    - method: agent
+      models: ["Claude (Anthropic)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude checked the statement against formal-conjectures, ported the
+        proof to Lean v4.33.1 and to this Palomar layout (Lean v4.35.0,
+        Mathlib-only Challenge), and wrote the comments and documentation.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "not tracked"
+  notes: >-
+    No human wrote the mathematical argument. The proof was found by the
+    automated session, the Lean kernel checked it, and the result was ported
+    and documented with Claude. The human maintainer directed the work and is
+    responsible for the submission.
+
+fidelity:
+  divergences: >-
+    None known. Challenge.lean states the formal-conjectures theorem verbatim.
+
+review:
+  status: "unchecked"
+  reviewers:
+    - "none"
+  notes: >-
+    No human has reviewed the mathematical argument. Correctness rests on the
+    Lean kernel and the independent kernels run by Comparator. The statement
+    was compared with Erdos1139.erdos_1139 at formal-conjectures <FC_COMMIT>.
+
+alignment:
+  namespace: "Erdos1139Proof"
+  statements:
+    - source: "Erdos1139.erdos_1139 (formal-conjectures)"
+      lean: "Erdos1139Proof.erdos_1139"
+      module: "Challenge"
+      status: "proved"
+      note: >-
+        limsup (u (k + 1) - u k) / log (k + 1) = ⊤ in EReal, where u enumerates
+        the positive integers with at most two prime factors.
+
+acknowledgements: >-
+  Mathlib. The statement follows google-deepmind/formal-conjectures
+  (Apache-2.0, copyright The Formal Conjectures Authors).
