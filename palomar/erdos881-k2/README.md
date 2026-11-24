@@ -79,8 +79,8 @@ con-leche and con-ron.
 
 ## How the proof was found
 
-The proof was found by an automated search with AI models in the
-[tokens-as-parameters](https://github.com/BruceLoveLee000/tokens-as-parameters) framework, with
+The proof was found by an automated search with AI models in an
+automated proof-search framework, with
 GPT-6.1 agents, and checked by the Lean kernel. Claude (Anthropic) reduced it to the declarations
 the theorems use, rewrote the comments and documentation, and ported it to this layout. No human
 wrote the mathematical argument, and no human has reviewed it; correctness rests on the kernel

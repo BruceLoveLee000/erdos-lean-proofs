@@ -65,8 +65,8 @@ The build prints the axioms of each theorem; each lists only `propext`, `Classic
 
 ## How this proof was found
 
-The proof was found by an automated search with AI models in the
-[tokens-as-parameters](https://github.com/BruceLoveLee000/tokens-as-parameters) framework,
+The proof was found by an automated search with AI models in an
+automated proof-search framework,
 with GPT-6.1 agents working in parallel and web research enabled, and then checked by the Lean kernel. The search ran on the
 full statement of Problem 881 and settled `k = 2` as a subgoal. The proof in this repository is the
 search's Lean code, reduced to the declarations the three theorems use; the comments and this

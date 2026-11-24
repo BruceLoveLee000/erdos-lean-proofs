@@ -33,8 +33,8 @@ build it from its own directory.
 
 ## How these proofs are found
 
-The proofs come from an automated search with AI models in the
-[tokens-as-parameters](https://github.com/BruceLoveLee000/tokens-as-parameters) framework and are
+The proofs come from an automated search with AI models in an
+automated proof-search framework and are
 checked by the Lean kernel. Each problem README describes the search that produced its proof.
 If you know an earlier proof of a result here, please open an issue.
 

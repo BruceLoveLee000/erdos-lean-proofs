@@ -124,7 +124,7 @@ automation:
   methods:
     - method: autonomous
       models: ["GPT-6.1"]
-      framework: "tokens-as-parameters (https://github.com/BruceLoveLee000/tokens-as-parameters)"
+      framework: "an automated proof-search framework"
       tool_setup: >-
         Automated proof search with AI agents working in parallel, with web
         research enabled, checked by the Lean kernel. The search ran on the
