@@ -99,7 +99,7 @@ automation:
   methods:
     - method: autonomous
       models: ["GPT-6.2-sol"]
-      framework: "Codex CLI, in a screening experiment of tokens-as-parameters (https://github.com/BruceLoveLee000/tokens-as-parameters)"
+      framework: "Codex CLI, in a screening experiment of an automated proof-search framework"
       tool_setup: >-
         One Codex CLI session at maximum reasoning effort, with the formal
         statement and its definitions only, no network access, and a 12-hour

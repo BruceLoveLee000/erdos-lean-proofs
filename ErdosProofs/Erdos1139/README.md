@@ -74,8 +74,7 @@ The build prints the axioms of both theorems. Each lists only `propext`, `Classi
 ## How this proof was found
 
 The proof was found by one Codex CLI session running GPT-6.2-sol at maximum reasoning effort, in a
-screening experiment of the
-[tokens-as-parameters](https://github.com/BruceLoveLee000/tokens-as-parameters) framework. The
+screening experiment of an automated proof-search framework. The
 session was given only the formal statement and its definitions, with no network access, and was
 not told that the problem is open. It found the proof in about 75 minutes, over two rounds, and the
 Lean kernel checked it. The proof in this repository is the session's Lean code, ported from Lean
