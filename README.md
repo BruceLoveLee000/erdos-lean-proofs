@@ -9,6 +9,7 @@ gives the statement, what is proved, the idea of the proof, and how the proof wa
 | Problem | Directory | Proved | Status of the problem |
 | --- | --- | --- | --- |
 | [881](https://www.erdosproblems.com/881) | [`ErdosProofs/Erdos881`](ErdosProofs/Erdos881) | the case `k = 2`, and a 1980 question of Erdős and Nathanson | open for `k ≥ 3` |
+| [1139](https://www.erdosproblems.com/1139) | [`ErdosProofs/Erdos1139`](ErdosProofs/Erdos1139) | the statement: gaps between integers with at most two prime factors are unbounded relative to `log k` | listed as open; a different, unformalized proof was claimed on the forum in June 2026 |
 
 ## Build
 
@@ -23,11 +24,12 @@ prints them.
 
 ## Palomar projects
 
-[`palomar/erdos881-k2`](palomar/erdos881-k2) is a self-contained copy of the Problem 881 proof
-in the layout of the [Palomar registry](https://palomar-registry.org): a Mathlib-only
-`Challenge.lean`, a `Solution.lean`, a Comparator configuration and a `formalization.yaml`. It
-builds on a newer Lean toolchain than the rest of the repository, so it has its own
-`lean-toolchain` and Lake files; build it from its own directory.
+[`palomar/erdos881-k2`](palomar/erdos881-k2) and [`palomar/erdos1139`](palomar/erdos1139) are
+self-contained copies of the Problem 881 and Problem 1139 proofs in the layout of the
+[Palomar registry](https://palomar-registry.org): a Mathlib-only `Challenge.lean`, a
+`Solution.lean`, a Comparator configuration and a `formalization.yaml`. Each builds on a newer
+Lean toolchain than the rest of the repository, so it has its own `lean-toolchain` and Lake files;
+build it from its own directory.
 
 ## How these proofs are found
 

@@ -1,0 +1,26 @@
+# Palomar's mechanical preflight for the Erdős 1139 project in palomar/erdos1139.
+# It runs Palomar's own verification workflow, pinned to one PalomarSubmission commit, on this
+# repository's runners. It is advisory and is not a registry submission.
+name: Palomar preflight (Erdős 1139)
+
+on:
+  pull_request:
+    paths:
+      - "palomar/erdos1139/**"
+      - ".github/workflows/palomar-preflight-1139.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  palomar-preflight:
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ github.event.pull_request.head.sha || github.sha }}
+      pipeline_commit: 14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+      request_id: preflght1139
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: '{"project_path":"palomar/erdos1139","comparator_config_path":"palomar/erdos1139/comparator.json","authorization_relationship":"I am a responsible author or maintainer"}'
